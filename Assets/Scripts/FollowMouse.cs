@@ -9,8 +9,9 @@ public class FollowMouse : MonoBehaviour
     }
     
     void Update () {
-        var mouseWorld = _camera.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0, 0));
-        transform.LookAt(mouseWorld);
+        var eyePosition = _camera.WorldToScreenPoint(transform.position);
+        var mousePosition = Input.mousePosition - eyePosition + new Vector3(0, 0, -50);
+        transform.LookAt(mousePosition);
     }
 
 }
